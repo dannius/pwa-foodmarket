@@ -21,18 +21,18 @@
     </div>
   </nav>
 
-  <aside class="aside" id="aside">
+  <aside class="aside aside__expanded" id="aside">
     <p class="aside__title">New Recipe</p>
 
     <div class="dropdown-divider"></div>
     
-    <form class="mt-4">
+    <form id="form" class="mt-4">
       <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Recipe's title">
+        <input name="title" type="text" class="form-control" placeholder="Recipe's title">
       </div>
 
       <div class="input-group mb-3">
-        <textarea name="" id="" rows="2" class="form-control" placeholder="Ingredients"></textarea>
+        <textarea name="ingredients" id="" rows="2" class="form-control" placeholder="Ingredients"></textarea>
       </div>
 
       <div class="input-group mb-3">
@@ -41,8 +41,8 @@
     </form>
   </aside>
 
-  <div class="container mt-4 mb-4">
-    <div class="recipes__list">
+  <div class="container">
+    <div class="mt-4 mb-4 recipes__list">
       <div class="card recipes__item d-inline-flex">
         <img class="m-auto" src="https://via.placeholder.com/150">
 
@@ -50,7 +50,7 @@
         <div class="mt-1 recipes__item-ingredients">ingredient ingredient ingredient</div>
         
         <div class="mt-1 ml-auto recipes__item-actions">
-          <button class="btn btn-danger">
+          <button class="btn btn-danger remove-recipe">
             <i class="fas fa-trash-alt"></i>
           </button>
         </div>
@@ -60,5 +60,8 @@
 
   <script src="https://kit.fontawesome.com/b120ba12e6.js"></script>
   <script src="./js/aside.js"></script>
+  <script src="./js/form.js"></script>
+  <script src="./js/recipes.js"></script>
+  <script src="./js/index.js"></script>
 </body>
 </html>
