@@ -1,5 +1,7 @@
 @import "./_reset.css";
 @import "./_recipes.css";
+@import "./_navbar.css";
+@import "./_aside.css";
 
 html,
 body {

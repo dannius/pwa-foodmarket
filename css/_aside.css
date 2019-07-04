@@ -1,0 +1,37 @@
+.aside {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 250px;
+  height: 100%;
+  background-color: #5c6bc0;
+  z-index: 100;
+  opacity: 0.95;
+  padding: 20px;
+  transition: 0.3s;
+  transform: translateX(-100%);
+}
+
+.aside__expanded {
+  transform: translateX(0);
+}
+
+.aside__btn-add {
+  color: #fff;
+  background-color: #26418f;
+}
+
+.aside__btn-add:hover {
+  color: #fff;
+  filter: brightness(90%);
+}
+
+.aside__btn-add:active {
+  color: #fff;
+  filter: brightness(70%);
+}
+
+.aside__title {
+  font-size: 28px;
+  color: #fff;
+}

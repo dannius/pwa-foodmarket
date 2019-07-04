@@ -15,11 +15,31 @@
     <div class="nav-wrapper container">
       <a class="navbar-brand" href="#">Food market</a>
 
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+      <button id="menu-btn" class="btn" type="button">
+        <i class="fas fa-hamburger navbar__add-icon"></i>
       </button>
     </div>
   </nav>
+
+  <aside class="aside" id="aside">
+    <p class="aside__title">New Recipe</p>
+
+    <div class="dropdown-divider"></div>
+    
+    <form class="mt-4">
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Recipe's title">
+      </div>
+
+      <div class="input-group mb-3">
+        <textarea name="" id="" rows="2" class="form-control" placeholder="Ingredients"></textarea>
+      </div>
+
+      <div class="input-group mb-3">
+        <button class="btn aside__btn-add mr-auto ml-auto">Add</button>
+      </div>
+    </form>
+  </aside>
 
   <div class="container mt-4 mb-4">
     <div class="recipes__list">
@@ -39,5 +59,6 @@
   </div>
 
   <script src="https://kit.fontawesome.com/b120ba12e6.js"></script>
+  <script src="./js/aside.js"></script>
 </body>
 </html>

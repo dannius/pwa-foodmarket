@@ -1,0 +1,12 @@
+.navbar__add-icon {
+  font-size: 32px;
+  opacity: 0.7;
+}
+
+.navbar__add-icon:hover {
+  opacity: 0.8;
+}
+
+.navbar__add-icon:active {
+  opacity: 1;
+}
