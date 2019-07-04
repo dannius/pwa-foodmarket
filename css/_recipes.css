@@ -1,0 +1,25 @@
+.recipes__list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px 20px;
+}
+
+.recipes__item {
+  padding: 15px;
+}
+
+.recipes__item-title {
+  font-size: 20px;
+}
+
+@media (max-width: 768px) {
+  .recipes__list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 500px) {
+  .recipes__list {
+    grid-template-columns: 1fr;
+  }
+}
