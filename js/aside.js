@@ -6,3 +6,7 @@ function setupAside() {
     asideMenu.classList.toggle('aside__expanded');
   });
 }
+
+window.addEventListener('load', () => {
+  setupAside();
+});

@@ -9,3 +9,7 @@ function setupForm() {
     const ingredients = form.ingredients.value;
   });
 }
+
+window.addEventListener('load', () => {
+  setupForm();
+});

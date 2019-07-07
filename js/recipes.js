@@ -11,3 +11,7 @@ function setupRecipes() {
     }
   });
 }
+
+window.addEventListener('load', () => {
+  setupRecipes();
+});
