@@ -1,4 +1,4 @@
-const staticCacheName = 'site-static';
+const staticCacheName = 'site-static-v2';
 const assets = [
   '/',
   '/index.html',
@@ -33,8 +33,16 @@ self.addEventListener('install', e => {
   );
 });
 
-self.addEventListener('activate', () => {
-  console.log('sw activated');
+self.addEventListener('activate', e => {
+  const deleteOldCaches = () =>
+    caches.keys().then(keys =>
+      Promise.all(
+        keys
+          .filter(key => key !== staticCacheName)
+          .map(key => caches.delete(key)))
+    )
+
+  e.waitUntil(deleteOldCaches());
 });
 
 self.addEventListener('fetch', e => {
