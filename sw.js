@@ -1,4 +1,4 @@
-const cacheVersion = '1';
+const cacheVersion = '5';
 const staticCacheName = `site-static-${cacheVersion}`;
 const dynamicCacheName = `site-dynamic-${cacheVersion}`;
 
@@ -27,9 +27,19 @@ const assets = [
   'https://fonts.gstatic.com/s/materialicons/v47/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2',
 ];
 
-self.addEventListener('install', e => {
-  console.log('sw installed');
+function limitCacheSize(name, size) {
+  return caches.open(name).then(cache => {
+    return cache.keys().then(keys => {
+      if (keys.length > size) {
+        cache.delete(keys[0]).then(() => limitCacheSize(name, size));
+      } else {
+        return new Promise(res => res());
+      }
+    })
+  })
+}
 
+self.addEventListener('install', e => {
   e.waitUntil(
     caches.open(staticCacheName).then(cache => {
       cache.addAll(assets);
@@ -62,9 +72,14 @@ self.addEventListener('fetch', e => {
             })
             .then(cache => {
               cache.put(e.request.url, response.clone());
-              return response;
+              return limitCacheSize(dynamicCacheName, 15);
             })
+            .then(() => response);
     })
-    .catch(() => caches.match('/pages/fallback.html'))
+    .catch(() => {
+      if (e.request.url.indexOf('.html') !== -1) {
+        return caches.match('/pages/fallback.html');
+      }
+    })
   );
 });
