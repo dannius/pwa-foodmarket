@@ -68,9 +68,33 @@
     </div>
   </div>
 
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-firestore.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use https://firebase.google.com/docs/web/setup#config-web-app -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyC96zkB9kGb_w1WY_yeV1JIdbe7GB2ebm0",
+    authDomain: "food-market-86901.firebaseapp.com",
+    databaseURL: "https://food-market-86901.firebaseio.com",
+    projectId: "food-market-86901",
+    storageBucket: "food-market-86901.appspot.com",
+    messagingSenderId: "276332912588",
+    appId: "1:276332912588:web:6cd9359380f6ef52"
+  };
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+</script>
+
   <script src="./js/aside.js"></script>
   <script src="./js/form.js"></script>
   <script src="./js/recipes.js"></script>
   <script src="./js/index.js"></script>
+  <script src="./js/db.js"></script>
 </body>
 </html>
