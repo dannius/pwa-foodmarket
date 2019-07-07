@@ -1,10 +1,11 @@
-const cacheVersion = '5';
+const cacheVersion = '1';
 const staticCacheName = `site-static-${cacheVersion}`;
 const dynamicCacheName = `site-dynamic-${cacheVersion}`;
 
 const assets = [
   '/',
   '/index.html',
+  '/pages/fallback.html',
 
   'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css',
   'https://fonts.googleapis.com/css?family=Mukta&display=swap',
@@ -64,5 +65,6 @@ self.addEventListener('fetch', e => {
               return response;
             })
     })
+    .catch(() => caches.match('/pages/fallback.html'))
   );
 });
