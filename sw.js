@@ -60,26 +60,26 @@ self.addEventListener('activate', e => {
 });
 
 self.addEventListener('fetch', e => {
-  let response;
+  // let response;
 
-  e.respondWith(
-    caches.match(e.request).then(cacheRes => {
-      return cacheRes
-        || fetch(e.request)
-            .then(res => {
-              response = res;
-              return caches.open(dynamicCacheName);
-            })
-            .then(cache => {
-              cache.put(e.request.url, response.clone());
-              return limitCacheSize(dynamicCacheName, 15);
-            })
-            .then(() => response);
-    })
-    .catch(() => {
-      if (e.request.url.indexOf('.html') !== -1) {
-        return caches.match('/pages/fallback.html');
-      }
-    })
-  );
+  // e.respondWith(
+  //   caches.match(e.request).then(cacheRes => {
+  //     return cacheRes
+  //       || fetch(e.request)
+  //           .then(res => {
+  //             response = res;
+  //             return caches.open(dynamicCacheName);
+  //           })
+  //           .then(cache => {
+  //             cache.put(e.request.url, response.clone());
+  //             return limitCacheSize(dynamicCacheName, 15);
+  //           })
+  //           .then(() => response);
+  //   })
+  //   .catch(() => {
+  //     if (e.request.url.indexOf('.html') !== -1) {
+  //       return caches.match('/pages/fallback.html');
+  //     }
+  //   })
+  // );
 });
