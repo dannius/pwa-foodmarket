@@ -1,4 +1,4 @@
-const cacheVersion = '5';
+const cacheVersion = '7';
 const staticCacheName = `site-static-${cacheVersion}`;
 const dynamicCacheName = `site-dynamic-${cacheVersion}`;
 
@@ -60,26 +60,29 @@ self.addEventListener('activate', e => {
 });
 
 self.addEventListener('fetch', e => {
-  // let response;
+  if (e.request.url.indexOf('firestore.googleapis.com') !== -1) {
+    return;
+  }
 
-  // e.respondWith(
-  //   caches.match(e.request).then(cacheRes => {
-  //     return cacheRes
-  //       || fetch(e.request)
-  //           .then(res => {
-  //             response = res;
-  //             return caches.open(dynamicCacheName);
-  //           })
-  //           .then(cache => {
-  //             cache.put(e.request.url, response.clone());
-  //             return limitCacheSize(dynamicCacheName, 15);
-  //           })
-  //           .then(() => response);
-  //   })
-  //   .catch(() => {
-  //     if (e.request.url.indexOf('.html') !== -1) {
-  //       return caches.match('/pages/fallback.html');
-  //     }
-  //   })
-  // );
+  let response;
+  e.respondWith(
+    caches.match(e.request).then(cacheRes => {
+      return cacheRes
+        || fetch(e.request)
+            .then(res => {
+              response = res;
+              return caches.open(dynamicCacheName);
+            })
+            .then(cache => {
+              cache.put(e.request.url, response.clone());
+              return limitCacheSize(dynamicCacheName, 15);
+            })
+            .then(() => response);
+    })
+    .catch(() => {
+      if (e.request.url.indexOf('.html') !== -1) {
+        return caches.match('/pages/fallback.html');
+      }
+    })
+  );
 });
